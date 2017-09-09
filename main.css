@@ -12,8 +12,7 @@ header .row
 h2
 {
     color: #FFFFFF;
-    
-    
+    font-weight: bold;
 }
 
 section
@@ -27,8 +26,19 @@ nav
     justify-content: flex-center;
     
 }
-h3
+nav h3 
 {
     padding: 0 20px;
+    font-weight: bold;
    
+}
+
+header a
+{
+    color: #FFFFFF;
+}
+
+#contact_h3
+{
+    font-weight: bold;
 }
