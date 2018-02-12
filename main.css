@@ -3,12 +3,14 @@ section img
     display: block;
     margin: auto;
     width: 75%;
-    padding: 30px 0 0 0;
+    padding: 30px 0 10px 0;
 }
 #source
 {
     text-align: center;
     font-family: "PT Sans", Helvetica, Arial, sans-serif;
+    Font-size: 16px;
+    padding: 0 0 20px 0; 
 }
 header
 {
@@ -23,28 +25,30 @@ header .row
     font-family: "PT Sans", Helvetica, Arial, sans-serif;
 }
 
-h1
+h1 
 {
-    text-align: center;
+    text-align: left;
     font-weight: bold;
+    Font-size: 42px;
     font-family: "PT Sans", Helvetica, Arial, sans-serif;
 }
 
 h2 
 {
-    color: #FFFFFF;
+    display: block;
     font-weight: bold;
 }
 
 section
 {
-    padding: 20px;
+    padding: 60px 0 0 0;
     font-family: "PT Sans", Helvetica, Arial, sans-serif;
 }
 p
 {
     font-family: "PT Sans", Helvetica, Arial, sans-serif;
-    font-size: 16px;
+    font-size: 20px;
+    padding: 10px 0 10px 0; 
 }
 nav
 {
