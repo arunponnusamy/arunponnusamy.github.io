@@ -31,33 +31,147 @@
 
 </header>
 
-<section class="container">
-    <p> Hey, This is Arun. I am a Software Engineer working on Image Processing, GPU
-    Computing and Performance Optimization. I am passionate about Computer Vision 
-    and Machine Learning. </p>
+<section>
+    <div>
+        <h1 class="col-sm-offset-2 col-sm-8 col-sm-offset-2"><u><a href="deep-learning-setup-macos.html">Setting up deep learning environment the easy way on macOS High Sierra</a></u></h1>
+	<p id="author" class="col-sm-offset-2 col-sm-8 col-sm-offset-2">17 Feb 2018 Arun Ponnusamy<p>
+        <img src="images/deeplearning-setup-macos/mac.jpg"/>
+        <p id="source">Source: Google Images</p>
+	
+	<p></p>
+	<p class="col-sm-offset-2 col-sm-8 col-sm-offset-2">This is from a long time 		Ubuntu user who recently picked up a MacBook Air for all the portability it has 	to offer.</p>
 
-    <p> I am a lifelong learner. Curious about everything. Simple. Calm. Open minded. 
-    I firmly believe anyone can learn anything if perseverance is in place.</p>  
+	<p class="col-sm-offset-2 col-sm-8 col-sm-offset-2">I am completely new to macOS. 	I had to look around and experiment to install all the packages I was enjoying on 	Ubuntu. I decided to put together a simple setup guide to get the deep learning 	environment (particularly for Computer Vision) up and running on macOS the easy 	way.</p>
 
-    <p>I like to read, write and travel to new places. I read online 
-    articles and watch youtube videos to keep up with what's happening in the tech space. Watch 
-    sensible movies and documentaries, listen to good music and podcasts to unwind myself. </p>
+	<p class="col-sm-offset-2 col-sm-8 col-sm-offset-2">I am documenting the process I 	followed to get things working. Some of the process may not be the efficient / 		optimized way but the goal here is to get the job done with minimal efforts / 		frustration.</p>
+	
+	<h2 class="col-sm-offset-2 col-sm-8 col-sm-offset-2">Target Audience</h2>
+	
+	<p class="col-sm-offset-2 col-sm-8 col-sm-offset-2">Someone coming from Ubuntu 		background, completely new to macOS, just want to set things up for deep learning 	and doesn’t want to feel <i>“I wish I didn’t pick up a MacBook”</I>.</p>
+	
+	<p class="col-sm-offset-3 col-sm-6 col-sm-offset-3 text-center">.    .    .</p>
+		     
+	<p class="col-sm-offset-2 col-sm-8 col-sm-offset-2">Following are the basic 		softwares/packages you need for deep learning. This is not an exhaustive list by 	any means. These are the basic things I work with for Computer Vision. Depending 	on your area of interest the list may vary.</p>
+        <ul class="col-sm-offset-3 col-sm-6 col-sm-offset-3">
+            <li>python3</li>
+	    <li>virtualenv</li>
+	    <li>opencv</li>
+	    <li>dlib</li>
+	    <li>tensorflow</li>
+	    <li>keras</li>
+	</ul>
+	<h2 class="col-sm-offset-2 col-sm-8 col-sm-offset-2">Before we start ..</h2>
+	<p class="col-sm-offset-2 col-sm-8 col-sm-offset-2">On Ubuntu, we all know that we 	can just go to the terminal and sudo apt-get install <whatever-we-want>. But 		what’s the play here on macOS?</p>
+	<p class="col-sm-offset-2 col-sm-8 col-sm-offset-2">It turns out that 			macOS is also a Unix based Operating System. So, luckily we have the same terminal 	we are all familiar with. But with some changes in the way we interact through 		commands.</p>
 
-    <p>I will be blogging here mostly around image processing, computer vision and machine learning.</p>
+	<p class="col-sm-offset-2 col-sm-8 col-sm-offset-2">For example, instead of 		<i>apt-get</i> package manager we have <i>brew (HomeBrew)</i> here.</p>
 
-    <p>You can find me on 
-    <a href="https://twitter.com/ponnusamy_arun">Twitter</a>, 
-    <a href="https://www.linkedin.com/in/arun-ponnusamy/">Linkedin</a>,
-    <a href="https://www.quora.com/profile/Arun-Ponnusamy-2">Quora</a> and 
-    <a href="https://medium.com/@arunponnusamy">Medium</a>. I would love to say hello :-)</p> 
+	<p class="col-sm-offset-2 col-sm-8 col-sm-offset-2">I have seen people 			recommending to install <i>Xcode</i> (an IDE for developers from Apple) as the 		first thing to do. But I don’t think it’s absolutely necessary. I was running 		Python scripts fine without actually installing Xcode and also Xcode is a heavy 	piece of software to run.</p>
+	
+	<p class="col-sm-offset-2 col-sm-8 col-sm-offset-2">So, the bottom line is you 		will be pretty much fine without Xcode.</p>
+
+	<h2 class="col-sm-offset-2 col-sm-8 col-sm-offset-2">Getting HomeBrew</h2>
+	<p><br>&nbsp;&nbsp;
+	</p>
+
+	<code class="col-sm-offset-2 col-sm-8 col-sm-offset-2">/usr/bin/ruby -e “$(curl -	fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" </code>
+	<p class="col-sm-offset-2 col-sm-8 col-sm-offset-2">Open up Terminal and enter the 	above command. It will install <i>brew</i> and only the necessary xcode command 	line tools.</p>
+
+	<h2 class="col-sm-offset-2 col-sm-8 col-sm-offset-2">Python 3</h2>
+	<code class="col-sm-offset-2 col-sm-8 col-sm-offset-2">brew install python3 </code>
+	<p class="col-sm-offset-2 col-sm-8 col-sm-offset-2">This will install latest version of Python for you. You can check whether it’s correctly installed by typing <i>python3</i> on the terminal.
+</p>
+
+	<code class="col-sm-offset-2 col-sm-8 col-sm-offset-2">brew install pip3 </code>
+
+	<p class="col-sm-offset-2 col-sm-8 col-sm-offset-2">This will install the package manager for Python3. You can check whether it’s correctly linked to Python3 by typing
+</p>
+	<code class="col-sm-offset-2 col-sm-8 col-sm-offset-2">pip3 -V</code>
+
+	<p class="col-sm-offset-2 col-sm-8 col-sm-offset-2">This should tell the version of pip and the version of Python it’s linked to. (Should be 3.x not 2.x)
+</p>
+
+	<h2 class="col-sm-offset-2 col-sm-8 col-sm-offset-2">Virtual Environment</h2>
+	<p class="col-sm-offset-2 col-sm-8 col-sm-offset-2">Virtual environment is a super useful tool to keep things clean and separate. All the Python packages you install will be virtually contained within a particular virtual environment you create and will not mess with the things outside. Trust me, this will save you a lot of frustration in future.</p>
+	<code class="col-sm-offset-2 col-sm-8 col-sm-offset-2">pip3 install virtualenv virtualenvwrapper</code>
+	<p class="col-sm-offset-2 col-sm-8 col-sm-offset-2">We need to update <i>.bash_profile</i> file before start enjoying the benefits of virtual environment. (There is no .bashrc in macOS)</p>
+	<p class="col-sm-offset-2 col-sm-8 col-sm-offset-2">If you can’t find <i> .bash_profile</i> file in your home directory, you can create one.</p>
+	<code class="col-sm-offset-2 col-sm-8 col-sm-offset-2">vim ~/.bash_profile</code>
+	<p class="col-sm-offset-2 col-sm-8 col-sm-offset-2">Add the following few lines and save the file.</p>
+	<code class="col-sm-offset-2 col-sm-8 col-sm-offset-2"># virtualenv and virtualenvwrapper</code>
+	<code class="col-sm-offset-2 col-sm-8 col-sm-offset-2">export WORKON_HOME=$HOME/.virtualenvs</code>
+	<code class="col-sm-offset-2 col-sm-8 col-sm-offset-2">export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3</code>
+	<code class="col-sm-offset-2 col-sm-8 col-sm-offset-2">source /usr/local/bin/virtualenvwrapper.sh</code>
+	<p class="col-sm-offset-2 col-sm-8 col-sm-offset-2">In Ubuntu, Python location used to be /usr/bin/python3</p>
+	<p class="col-sm-offset-2 col-sm-8 col-sm-offset-2">Now type <code>source ~/.bash_profile</code> on the terminal. Make sure it doesn’t throw any error.</p>
+	<p class="col-sm-offset-2 col-sm-8 col-sm-offset-2">Now you are all set to create your first virtual environment.</p>
+
+	<h2 class="col-sm-offset-2 col-sm-8 col-sm-offset-2">Creating Virtual Environment</h2>
+	<p class="col-sm-offset-2 col-sm-8 col-sm-offset-2">You can create as many virtual environments you want with any name you wish.</p>
+	<code class="col-sm-offset-2 col-sm-8 col-sm-offset-2">mkvirtualenv cv -p python3
+</code>
+	<p class="col-sm-offset-2 col-sm-8 col-sm-offset-2">The above line creates a virtual environment named <code>cv</code></p>
+	<p class="col-sm-offset-2 col-sm-8 col-sm-offset-2">Now you are inside the virtual environment <code>cv</code> . You can look for <i>(cv)</i> sign at the beginning of shell prompt.</p>
+        <img class="col-sm-offset-3 col-sm-6 col-sm-offset-3" src="https://cdn-images-1.medium.com/max/800/1*jUD08j7QZfY4QZAJ3GljsQ.png"/>
+        <p id="source" class="col-sm-offset-3 col-sm-6 col-sm-offset-3">Inside the virtual environment <b><i>cv</i></b></p>
+	<p class="col-sm-offset-2 col-sm-8 col-sm-offset-2">You can come out of the environment by typing <code>deactivate</code> and enter the environment by typing <code>workon <env-name></code>.</p>
+
+	<h2 class="col-sm-offset-2 col-sm-8 col-sm-offset-2">Some of the dependencies ..
+</h2>
+	<p class="col-sm-offset-2 col-sm-8 col-sm-offset-2">Before we start pip installing Python packages, let’s take care of some of the dependencies these packages have.</p>
+
+	<p class="col-sm-offset-2 col-sm-8 col-sm-offset-2">Come out of the virtual environment by typing <code>deactivate</code>.</p>
+	<code class="col-sm-offset-2 col-sm-8 col-sm-offset-2">brew install cmake </code>
+
+	<p class="col-sm-offset-2 col-sm-8 col-sm-offset-2">This installs cmake which is needed for dlib.</p>
+	<p class="col-sm-offset-2 col-sm-8 col-sm-offset-2">To display image outputs from <i>opencv</i> or <i>dlib</i> , we need to install <i><b>X11</b></i>. Download X11 from <a href="https://www.xquartz.org/">xquartz.org</a> and install it by double clicking the downloaded file. Once it finishes installing you might want to logout and log back in.</p>
+	<p class="col-sm-offset-2 col-sm-8 col-sm-offset-2">So, that’s it. Let’s get pip installing.</p>
+
+	<h2 class="col-sm-offset-2 col-sm-8 col-sm-offset-2">OpenCV</h2>
+	<p class="col-sm-offset-2 col-sm-8 col-sm-offset-2">Go into the virtual environment by typing</p>
+	<code class="col-sm-offset-2 col-sm-8 col-sm-offset-2">workon cv</code>
+	<p class="col-sm-offset-2 col-sm-8 col-sm-offset-2">Make sure the <i>(cv)</i> sign appears in the command line.</p>
+	<p class="col-sm-offset-2 col-sm-8 col-sm-offset-2">Let’s install some of the pre-requisite/other useful packages.</p>
+        <code class="col-sm-offset-2 col-sm-8 col-sm-offset-2">pip install numpy h5py pillow scikit-image</code>
+	<p class="col-sm-offset-2 col-sm-8 col-sm-offset-2">Install OpenCV for Python by typing</p>
+        <code class="col-sm-offset-2 col-sm-8 col-sm-offset-2">pip install opencv-python
+</code>
+	<p class="col-sm-offset-2 col-sm-8 col-sm-offset-2"><b>Note:</b><i> opencv-python is a community supported package, not officially from OpenCV. It may be a bit slow since we are not compiling from source on our system. But this is the easiest way to get going.</i></p>
+
+	<h2 class="col-sm-offset-2 col-sm-8 col-sm-offset-2">Dlib</h2>
+        <code class="col-sm-offset-2 col-sm-8 col-sm-offset-2">pip install dlib</code>
+	<p class="col-sm-offset-2 col-sm-8 col-sm-offset-2">This might take a while. Please be patient till it completes the installation. (No, it’s not hung)</p>
+
+	<h2 class="col-sm-offset-2 col-sm-8 col-sm-offset-2">TensorFlow</h2>
+        <code class="col-sm-offset-2 col-sm-8 col-sm-offset-2">pip install tensorflow</code>
+	<p class="col-sm-offset-2 col-sm-8 col-sm-offset-2">This installs the cpu version of tensorflow. Again, we are not compiling from source. So, it’s not optimized for our system. But we will be fine with this. (Ignore the messages it prints about how it can be optimized for your system while importing tensorflow on the code)</p>
+
+	<h2 class="col-sm-offset-2 col-sm-8 col-sm-offset-2">Keras</h2>
+        <code class="col-sm-offset-2 col-sm-8 col-sm-offset-2">pip install keras</code>
+	<p class="col-sm-offset-2 col-sm-8 col-sm-offset-2">Keras is a very beginner-friendly deep learning library. It runs on top of tensorflow. You can build models very quickly using keras.</p>
+	<p class="col-sm-offset-2 col-sm-8 col-sm-offset-2">Test all the packages installed by importing them. Type <code>python</code> on Terminal. It should give you the python shell. Import the packages one by one and check their version. Make sure you don’t face any error. If so, installation was not complete.</p>
+        <code class="col-sm-offset-2 col-sm-8 col-sm-offset-2">import cv2
+</code>
+        <code class="col-sm-offset-2 col-sm-8 col-sm-offset-2">print(cv2.__version__)
+</code>
+        <img class="col-sm-offset-3 col-sm-6 col-sm-offset-3" src="https://cdn-images-1.medium.com/max/800/1*RMH1gRQzyNsiMMKUMa8tXg.png"/>
+        <p id="source" class="col-sm-offset-3 col-sm-6 col-sm-offset-3">import packages and check their version</p>
+
+	<h2 class="col-sm-offset-2 col-sm-8 col-sm-offset-2">Summary</h2>
+	<p class="col-sm-offset-2 col-sm-8 col-sm-offset-2">We installed the basic packages/software needed for deep learning (particularly for computer vision) on macOS High Sierra the easiest way possible without dealing with much frustration.</p>
+	<p class="col-sm-offset-2 col-sm-8 col-sm-offset-2">I hope this helps someone out there like me, getting started with macOS. Feel free to share your comments <a href="https://medium.com/@arunponnusamy/setting-up-deep-learning-environment-the-easy-way-on-macos-high-sierra-f1b6331ffc40">here</a> or you can reach out to me on <a href="http://twitter.com/@ponnusamy_arun">Twitter</a>.</p>
+	<p class="col-sm-offset-2 col-sm-8 col-sm-offset-2">Peace.</p>
+	
+
+   </div>
 
 </section>
 
-<footer class="container">
+<footer class="col-sm-offset-2 col-sm-8 col-sm-offset-2">
     <div class="row">
-        <p class="col-sm-4">&copy; 2017 Arun Ponnusamy</p>
+        <p class="col-sm-4">&copy; 2018 Arun Ponnusamy</p>
         <ul class="col-sm-8">
-	    <li class="col-sm-1"><a href="https://github.com/arunponnusamy"><img src="https://image.flaticon.com/icons/png/512/25/25231.png"></a></li>  
+            <li class="col-sm-1"><a href="https://github.com/arunponnusamy"><img src="https://image.flaticon.com/icons/png/512/25/25231.png"></a></li>  
             <li class="col-sm-1"><a href="https://twitter.com/ponnusamy_arun"><img src="https://www.w3.org/2008/site/images/Twitter_bird_logo_2012.svg"></a></li>  
             <li class="col-sm-1"><a href="https://www.linkedin.com/in/arun-ponnusamy/"><img src="https://norfipc.com/img/logos/logotipo-oficial-linkedin-2014.png"></a></li>
             <li class="col-sm-1"><a href="https://www.quora.com/profile/Arun-Ponnusamy-2"><img src="http://cdn.embed.ly/providers/logos/quora.png"></a></li>

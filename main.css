@@ -37,6 +37,19 @@ h1
     font-family: "PT Sans", Helvetica, Arial, sans-serif;
 }
 
+h1 a
+{
+    color: #000000;
+    text-decoration: none;
+}
+h1 a:hover 
+{
+     color: #000000;
+     text-decoration:none; 
+      
+}
+} 
+
 h2 
 {
     display: block;
