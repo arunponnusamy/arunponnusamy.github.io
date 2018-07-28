@@ -33,7 +33,7 @@ h1
 {
     text-align: left;
     font-weight: bold;
-    Font-size: 42px;
+    Font-size: 40px;
     font-family: "PT Sans", Helvetica, Arial, sans-serif;
 }
 
@@ -61,6 +61,11 @@ h2 a
     color: #000000;
     text-decoration: none;
 }
+
+h3
+{
+    font-weight: bold;
+} 
 
 section
 {
