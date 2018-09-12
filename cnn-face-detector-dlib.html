@@ -36,7 +36,7 @@
 <header>
     <div class="container">
         <div class="row">
-            <h2 class="col-sm-6 text-left">
+            <h2 class="col-sm-offset-2 img class="col-sm-offset-4 col-sm-4 col-sm-offset-4col-sm-4 text-left">
             <a href="index.html">Arun Ponnusamy</a></h2>
             <nav class="col-sm-6 text-right">
             <h3>
@@ -54,201 +54,205 @@
 
 <section>
     <div>
-        <h1 class="col-sm-offset-2 col-sm-8 col-sm-offset-2">CNN based face detector from dlib</h1>
-	<p id="author" class="col-sm-offset-2 col-sm-8 col-sm-offset-2">18 Apr 2018 Arun Ponnusamy<p>
-        <img class="col-sm-offset-2 col-sm-8 col-sm-offset-2" src="images/cnn-face-detector-dlib/cnn-face-detection.png"/>
-        <p class="col-sm-offset-2 col-sm-8 col-sm-offset-2" id="source">Image Source: Google Images</p>
+        <h1 class="col-sm-offset-3 col-sm-6 col-sm-offset-3">CNN based face detector from dlib</h1>
+	<p id="author" class="col-sm-offset-3 col-sm-6 col-sm-offset-3">18 Apr 2018 Arun Ponnusamy<p>
+        <img class="col-sm-offset-3 col-sm-6 col-sm-offset-3" src="images/cnn-face-detector-dlib/cnn-face-detection.png"/>
+        <p class="col-sm-offset-3 col-sm-6 col-sm-offset-3" id="source">Image Source: Google Images</p>
 	
 	<p></p>
-	<p class="col-sm-offset-2 col-sm-8 col-sm-offset-2">If you are into any sort of image processing, computer vision or machine learning, chances are high that you might have come across/used dlib somewhere in your journey.</p>
+	<p class="col-sm-offset-3 col-sm-6 col-sm-offset-3">If you are into any sort of image processing, computer vision or machine learning, chances are high that you might have come across/used dlib somewhere in your journey.</p>
 
-	<p class="col-sm-offset-2 col-sm-8 col-sm-offset-2">According to dlib’s <a href="https://github.com/davisking/dlib">github page</a>, <i>dlib is a toolkit for making real world machine learning and data analysis applications in C++.</i> While the library is originally written in C++, it has good, easy to use Python bindings.</p>
+	<p class="col-sm-offset-3 col-sm-6 col-sm-offset-3">According to dlib’s <a href="https://github.com/davisking/dlib">github page</a>, <i>dlib is a toolkit for making real world machine learning and data analysis applications in C++.</i> While the library is originally written in C++, it has good, easy to use Python bindings.</p>
 
-	<p class="col-sm-offset-2 col-sm-8 col-sm-offset-2">I have majorly used dlib for <b>face detection</b> and <b>facial landmark detection</b>. The frontal face detector in dlib works really well. It is simple and just works out of the box.</p>
+	<p class="col-sm-offset-3 col-sm-6 col-sm-offset-3">I have majorly used dlib for <b>face detection</b> and <b>facial landmark detection</b>. The frontal face detector in dlib works really well. It is simple and just works out of the box.</p>
 		
-	<p class="col-sm-offset-2 col-sm-8 col-sm-offset-2">This detector is based on <i>histogram of oriented gradients (HOG)</i> and <i>linear SVM</i>. (Explaining how this detector works is beyond the scope of this blog post. Probably a topic to discuss for another day)</p>
+	<p class="col-sm-offset-3 col-sm-6 col-sm-offset-3">This detector is based on <i>histogram of oriented gradients (HOG)</i> and <i>linear SVM</i>. (Explaining how this detector works is beyond the scope of this blog post. Probably a topic to discuss for another day)</p>
 	
-<p class="col-sm-offset-2 col-sm-8 col-sm-offset-2">While the HOG+SVM based face detector has been around for a while and has gathered a good amount of users, I am not sure how many of us noticed the CNN (Convolutional Neural Network) based face detector available in dlib. Honestly, I didn’t. I accidentally came across it while browsing through dlib’s github repository.</p>
+<p class="col-sm-offset-3 col-sm-6 col-sm-offset-3">While the HOG+SVM based face detector has been around for a while and has gathered a good amount of users, I am not sure how many of us noticed the CNN (Convolutional Neural Network) based face detector available in dlib. Honestly, I didn’t. I accidentally came across it while browsing through dlib’s github repository.</p>
 
-<p class="col-sm-offset-2 col-sm-8 col-sm-offset-2">My immediate thoughts were like,</p>
+<p class="col-sm-offset-3 col-sm-6 col-sm-offset-3">My immediate thoughts were like,</p>
 
-<p class="col-sm-offset-2 col-sm-8 col-sm-offset-2"><b>“Wow. Is it better than the existing detector ? How accurate it is ? Can it detect the face in all angles ? Can it run on real-time video ?”</b></p>
+<p class="col-sm-offset-3 col-sm-6 col-sm-offset-3"><b>“Wow. Is it better than the existing detector ? How accurate it is ? Can it detect the face in all angles ? Can it run on real-time video ?”</b></p>
 
-<p class="col-sm-offset-2 col-sm-8 col-sm-offset-2">Well, that’s what this post is all about. Trying to find out the answers for the above questions.</p>
+<p class="col-sm-offset-3 col-sm-6 col-sm-offset-3">Well, that’s what this post is all about. Trying to find out the answers for the above questions.</p>
 
 	<p class="col-sm-offset-3 col-sm-6 col-sm-offset-3 text-center">.    .    .</p>
 		     
-	<p class="col-sm-offset-2 col-sm-8 col-sm-offset-2">If you have ever used the HOG based face detector in dlib, you probably know that it will not detect faces at odd angles. It is meant to be a good <i>"frontal"</i> face detector and it is, indeed.</p>
+	<p class="col-sm-offset-3 col-sm-6 col-sm-offset-3">If you have ever used the HOG based face detector in dlib, you probably know that it will not detect faces at odd angles. It is meant to be a good <i>"frontal"</i> face detector and it is, indeed.</p>
 
-<p class="col-sm-offset-2 col-sm-8 col-sm-offset-2">It detects faces even when they are not perfectly frontal to a good extend. Which is really good for a frontal face detector. But you can only expect so much from it.</p>
+<p class="col-sm-offset-3 col-sm-6 col-sm-offset-3">It detects faces even when they are not perfectly frontal to a good extend. Which is really good for a frontal face detector. But you can only expect so much from it.</p>
 
-<p class="col-sm-offset-2 col-sm-8 col-sm-offset-2">Meanwhile, the CNN based detector is capable of detecting faces almost in all angles. Unfortunately it is not suitable for real time video. It is meant to be executed on a GPU. To get the same speed as the HOG based detector you might need to run on a powerful Nvidia GPU.</p>
+<p class="col-sm-offset-3 col-sm-6 col-sm-offset-3">Meanwhile, the CNN based detector is capable of detecting faces almost in all angles. Unfortunately it is not suitable for real time video. It is meant to be executed on a GPU. To get the same speed as the HOG based detector you might need to run on a powerful Nvidia GPU.</p>
 
-<p class="col-sm-offset-2 col-sm-8 col-sm-offset-2">Nevertheless, this should not stop us from trying it on images.</p>
+<p class="col-sm-offset-3 col-sm-6 col-sm-offset-3">Nevertheless, this should not stop us from trying it on images.</p>
 
-<p class="col-sm-offset-2 col-sm-8 col-sm-offset-2">In the remainder of this post, I am going to show you how you can use the CNN based face detector from dlib on images and compare the results with HOG based detector with ready to use Python code.</p>
+<p class="col-sm-offset-3 col-sm-6 col-sm-offset-3">In the remainder of this post, I am going to show you how you can use the CNN based face detector from dlib on images and compare the results with HOG based detector with ready to use Python code.</p>
 
-<p class="col-sm-offset-2 col-sm-8 col-sm-offset-2">Let’s jump right in and start coding.<p class="col-sm-offset-2 col-sm-8 col-sm-offset-2"></p></p>
+<p class="col-sm-offset-3 col-sm-6 col-sm-offset-3">Let’s jump right in and start coding.<p class="col-sm-offset-3 col-sm-6 col-sm-offset-3"></p></p>
 
-<h2 class="col-sm-offset-2 col-sm-8 col-sm-offset-2">Getting started</h2>
+<h2 class="col-sm-offset-3 col-sm-6 col-sm-offset-3">Getting started</h2>
 
-<div class="col-sm-offset-2 col-sm-8 col-sm-offset-2">
+<div class="col-sm-offset-3 col-sm-6 col-sm-offset-3">
 <script src="https://gist.github.com/arunponnusamy/2387d11c0a2995a5e428eb425835a2dc.js"></script></div>
 
-<p class="col-sm-offset-2 col-sm-8 col-sm-offset-2">Let’s start by importing the necessary packages. If you have not installed these packages, you can install them by typing the below command in the Terminal.</p>
+<p class="col-sm-offset-3 col-sm-6 col-sm-offset-3">Let’s start by importing the necessary packages. If you have not installed these packages, you can install them by typing the below command in the Terminal.</p>
 
-<code class="col-sm-offset-2 col-sm-8 col-sm-offset-2">pip install opencv-python dlib argparse time</code>
+<code class="col-sm-offset-3 col-sm-6 col-sm-offset-3">pip install opencv-python dlib argparse time</code>
 
-<p class="col-sm-offset-2 col-sm-8 col-sm-offset-2">(argparse and time are more likely to come pre-installed with Python)</p>
+<p class="col-sm-offset-3 col-sm-6 col-sm-offset-3">(argparse and time are more likely to come pre-installed with Python)</p>
 
-<p class="col-sm-offset-2 col-sm-8 col-sm-offset-2">If you are not using virtual environment for Python, I highly recommend to start using it. You can checkout my previous <a href="http://www.arunponnusamy.com/deep-learning-setup-macos.html">post</a> if you need a starting point.</p>
+<p class="col-sm-offset-3 col-sm-6 col-sm-offset-3">If you are not using virtual environment for Python, I highly recommend to start using it. You can checkout my previous <a href="http://www.arunponnusamy.com/deep-learning-setup-macos.html">post</a> if you need a starting point.</p>
 
-<h2 class="col-sm-offset-2 col-sm-8 col-sm-offset-2">Command line arguments</h2>
-<p class="col-sm-offset-2 col-sm-8 col-sm-offset-2">This script requires two command line arguments.</p>
+<h2 class="col-sm-offset-3 col-sm-6 col-sm-offset-3">Command line arguments</h2>
+<p class="col-sm-offset-3 col-sm-6 col-sm-offset-3">This script requires two command line arguments.</p>
 <ul class="col-sm-offset-3 col-sm-6 col-sm-offset-3">
             <li>input image</li>
 	    <li>model weights</li>
 </ul>
-<p class="col-sm-offset-2 col-sm-8 col-sm-offset-2">You can get the model weights file by typing the below command in Terminal.</p>
-<code class="col-sm-offset-2 col-sm-8 col-sm-offset-2">wget http://arunponnusamy.com/files/mmod_human_face_detector.dat</code>
+<p class="col-sm-offset-3 col-sm-6 col-sm-offset-3">You can get the model weights file by typing the below command in Terminal.</p>
+<code class="col-sm-offset-3 col-sm-6 col-sm-offset-3">wget http://arunponnusamy.com/files/mmod_human_face_detector.dat</code>
 
-<p class="col-sm-offset-2 col-sm-8 col-sm-offset-2">By default the code looks for the model file in the current directory if you don’t provide any specific path.</p>
+<p class="col-sm-offset-3 col-sm-6 col-sm-offset-3">By default the code looks for the model file in the current directory if you don’t provide any specific path.</p>
 
-<p class="col-sm-offset-2 col-sm-8 col-sm-offset-2">For example, you can run by typing</p>
+<p class="col-sm-offset-3 col-sm-6 col-sm-offset-3">For example, you can run by typing</p>
 
-<code class="col-sm-offset-2 col-sm-8 col-sm-offset-2">python cnn-face-detector-dlib.py -i input.jpg</code>
+<code class="col-sm-offset-3 col-sm-6 col-sm-offset-3">python cnn-face-detector-dlib.py -i input.jpg</code>
 
-<p class="col-sm-offset-2 col-sm-8 col-sm-offset-2">(This will work if both the <i>input.jpg</i> and <i>model weights file</i> are in the current directory same as the python script)</p>
+<p class="col-sm-offset-3 col-sm-6 col-sm-offset-3">(This will work if both the <i>input.jpg</i> and <i>model weights file</i> are in the current directory same as the python script)</p>
 
-<p class="col-sm-offset-2 col-sm-8 col-sm-offset-2">Or you can run by typing,</p>
+<p class="col-sm-offset-3 col-sm-6 col-sm-offset-3">Or you can run by typing,</p>
 
-<p class="col-sm-offset-2 col-sm-8 col-sm-offset-2"><code>python cnn-face-detector-dlib.py -i path-to-input-image -w path-to-weights-file</code></p>
+<p class="col-sm-offset-3 col-sm-6 col-sm-offset-3"><code>python cnn-face-detector-dlib.py -i path-to-input-image -w path-to-weights-file</code></p>
 
-<p class="col-sm-offset-2 col-sm-8 col-sm-offset-2"><i>(python cnn-face-detector-dlib.py -i ~/Downloads/input.jpg -w ~/Downloads/mmod_human_face_detector.dat)</i></p>
+<p class="col-sm-offset-3 col-sm-6 col-sm-offset-3"><i>(python cnn-face-detector-dlib.py -i ~/Downloads/input.jpg -w ~/Downloads/mmod_human_face_detector.dat)</i></p>
 
-<p class="col-sm-offset-2 col-sm-8 col-sm-offset-2"><b>(I assume you have the latest version of Python installed. Must be 3.0+)</b></p>
+<p class="col-sm-offset-3 col-sm-6 col-sm-offset-3"><b>(I assume you have the latest version of Python installed. Must be 3.0+)</b></p>
 
-<h2 class="col-sm-offset-2 col-sm-8 col-sm-offset-2">Initialization</h2>
+<h2 class="col-sm-offset-3 col-sm-6 col-sm-offset-3">Initialization</h2>
 
-<div class="col-sm-offset-2 col-sm-8 col-sm-offset-2">
+<div class="col-sm-offset-3 col-sm-6 col-sm-offset-3">
 <script src="https://gist.github.com/arunponnusamy/86e92cb696a460140467b281ab4d2c59.js"></script></div>
 
-<p class="col-sm-offset-2 col-sm-8 col-sm-offset-2">Read the input image provided and check whether its of type <i>None</i>. If so print the error statement and exit the program.</p>
+<p class="col-sm-offset-3 col-sm-6 col-sm-offset-3">Read the input image provided and check whether its of type <i>None</i>. If so print the error statement and exit the program.</p>
 
-<p class="col-sm-offset-2 col-sm-8 col-sm-offset-2">Initialize the HOG based and CNN based face detectors which we will be applying on the input image.</p>
+<p class="col-sm-offset-3 col-sm-6 col-sm-offset-3">Initialize the HOG based and CNN based face detectors which we will be applying on the input image.</p>
 
-<p class="col-sm-offset-2 col-sm-8 col-sm-offset-2">For the HOG based one we don’t need to provide any file to initialize. It is pre-built inside dlib. Just calling the method should be enough.</p>
+<p class="col-sm-offset-3 col-sm-6 col-sm-offset-3">For the HOG based one we don’t need to provide any file to initialize. It is pre-built inside dlib. Just calling the method should be enough.</p>
 
-<p class="col-sm-offset-2 col-sm-8 col-sm-offset-2">For the CNN based one, we need to provide the weights file to initialize with.</p>
+<p class="col-sm-offset-3 col-sm-6 col-sm-offset-3">For the CNN based one, we need to provide the weights file to initialize with.</p>
 
-<h2 class="col-sm-offset-2 col-sm-8 col-sm-offset-2">Applying HOG face detection</h2>
+<h2 class="col-sm-offset-3 col-sm-6 col-sm-offset-3">Applying HOG face detection</h2>
 
-<div class="col-sm-offset-2 col-sm-8 col-sm-offset-2">
+<div class="col-sm-offset-3 col-sm-6 col-sm-offset-3">
 <script src="https://gist.github.com/arunponnusamy/0b35ee1879844eddaea0f21f1962e5d1.js"></script></div>
 
-<p class="col-sm-offset-2 col-sm-8 col-sm-offset-2">Let’s apply the detector on the input image.</p>
+<p class="col-sm-offset-3 col-sm-6 col-sm-offset-3">Let’s apply the detector on the input image.</p>
 
-<code class="col-sm-offset-2 col-sm-8 col-sm-offset-2">faces_hog = hog_face_detector(image, 1)</code>
+<code class="col-sm-offset-3 col-sm-6 col-sm-offset-3">faces_hog = hog_face_detector(image, 1)</code>
 
-<p class="col-sm-offset-2 col-sm-8 col-sm-offset-2">1 is the number of times it should upsample the image. By default, 1 works for most cases. (Upsampling the image helps to detect smaller faces)</p>
+<p class="col-sm-offset-3 col-sm-6 col-sm-offset-3">1 is the number of times it should upsample the image. By default, 1 works for most cases. (Upsampling the image helps to detect smaller faces)</p>
 
-<p class="col-sm-offset-2 col-sm-8 col-sm-offset-2"><code>time.time()</code> can be used to measure the execution time in seconds.</p>
+<p class="col-sm-offset-3 col-sm-6 col-sm-offset-3"><code>time.time()</code> can be used to measure the execution time in seconds.</p>
 
-<p class="col-sm-offset-2 col-sm-8 col-sm-offset-2">Once the detection is done, we can loop over the detected face(s). To draw box over the detected faces, we need to provide (x,y) — top left corner and (x+w, y+h) — bottom right corner to OpenCV.</p>
+<p class="col-sm-offset-3 col-sm-6 col-sm-offset-3">Once the detection is done, we can loop over the detected face(s). To draw box over the detected faces, we need to provide (x,y) — top left corner and (x+w, y+h) — bottom right corner to OpenCV.</p>
 
-<p class="col-sm-offset-2 col-sm-8 col-sm-offset-2">Rectangle format in dlib and OpenCV are a bit different. We can use <a href="http://scikit-image.org">skimage</a> here to directly overlay the dlib rectangle object on the image. But getting familiar with the conversion between dlib and OpenCV will be helpful when we are processing real time video with OpenCV.</p>
+<p class="col-sm-offset-3 col-sm-6 col-sm-offset-3">Rectangle format in dlib and OpenCV are a bit different. We can use <a href="http://scikit-image.org">skimage</a> here to directly overlay the dlib rectangle object on the image. But getting familiar with the conversion between dlib and OpenCV will be helpful when we are processing real time video with OpenCV.</p>
 
-<code class="col-sm-offset-2 col-sm-8 col-sm-offset-2">cv2.rectangle(image, (x,y), (x+w,y+h), (0,255,0), 2)</code>
+<code class="col-sm-offset-3 col-sm-6 col-sm-offset-3">cv2.rectangle(image, (x,y), (x+w,y+h), (0,255,0), 2)</code>
 
-<p class="col-sm-offset-2 col-sm-8 col-sm-offset-2">The above line will draw a rectangle on the detected face on the input image. (0,255,0) represents the <i>color</i> of the box in <i>BGR</i> order (green in this case). 2 represents the <i>thickness</i> of the line.</p>
+<p class="col-sm-offset-3 col-sm-6 col-sm-offset-3">The above line will draw a rectangle on the detected face on the input image. (0,255,0) represents the <i>color</i> of the box in <i>BGR</i> order (green in this case). 2 represents the <i>thickness</i> of the line.</p>
 
-<h2 class="col-sm-offset-2 col-sm-8 col-sm-offset-2">Applying CNN face detection</h2>
+<h2 class="col-sm-offset-3 col-sm-6 col-sm-offset-3">Applying CNN face detection</h2>
 
-<div class="col-sm-offset-2 col-sm-8 col-sm-offset-2">
+<div class="col-sm-offset-3 col-sm-6 col-sm-offset-3">
 <script src="https://gist.github.com/arunponnusamy/9255b09aaef9c5fbd0bd8a8380a0f726.js"></script></div>
 
-<p class="col-sm-offset-2 col-sm-8 col-sm-offset-2">The process is almost same as the previous detector except the returned rectangle object by the detector. Let’s use color red for CNN detected faces to differentiate from HOG.</p>
+<p class="col-sm-offset-3 col-sm-6 col-sm-offset-3">The process is almost same as the previous detector except the returned rectangle object by the detector. Let’s use color red for CNN detected faces to differentiate from HOG.</p>
 
-<h2 class="col-sm-offset-2 col-sm-8 col-sm-offset-2">Display results</h2>
+<h2 class="col-sm-offset-3 col-sm-6 col-sm-offset-3">Display results</h2>
 
-<div class="col-sm-offset-2 col-sm-8 col-sm-offset-2">
+<div class="col-sm-offset-3 col-sm-6 col-sm-offset-3">
 <script src="https://gist.github.com/arunponnusamy/0b4ba61bc46443c15c34df0bea2c9961.js"></script></div>
 
-<p class="col-sm-offset-2 col-sm-8 col-sm-offset-2">To differentiate the detections from HOG and CNN detectors, lets’s write which color is which at the top right corner of the image.</p>
+<p class="col-sm-offset-3 col-sm-6 col-sm-offset-3">To differentiate the detections from HOG and CNN detectors, lets’s write which color is which at the top right corner of the image.</p>
 
-<p class="col-sm-offset-2 col-sm-8 col-sm-offset-2"><code>cv2.imshow()</code> will display the output image when you run the script.</p>
+<p class="col-sm-offset-3 col-sm-6 col-sm-offset-3"><code>cv2.imshow()</code> will display the output image when you run the script.</p>
 
-<p class="col-sm-offset-2 col-sm-8 col-sm-offset-2"><code>cv2.waitKey()</code> specifies how long the display window should wait before closing. For example <code>cv2.waitKey(500)</code> will display the window for <i>500ms(0.5 sec)</i>. If you don’t pass any number it will wait until you press any key.</p>
+<p class="col-sm-offset-3 col-sm-6 col-sm-offset-3"><code>cv2.waitKey()</code> specifies how long the display window should wait before closing. For example <code>cv2.waitKey(500)</code> will display the window for <i>500ms(0.5 sec)</i>. If you don’t pass any number it will wait until you press any key.</p>
 
-<p class="col-sm-offset-2 col-sm-8 col-sm-offset-2"><code>cv2.imwrite()</code> will save the output image to disk.</p>
+<p class="col-sm-offset-3 col-sm-6 col-sm-offset-3"><code>cv2.imwrite()</code> will save the output image to disk.</p>
 
-<p class="col-sm-offset-2 col-sm-8 col-sm-offset-2">It’s a good practice to release all the windows once we are done with the display.</p>
+<p class="col-sm-offset-3 col-sm-6 col-sm-offset-3">It’s a good practice to release all the windows once we are done with the display.</p>
 
-<p class="col-sm-offset-2 col-sm-8 col-sm-offset-2">The full code is available <a href="https://gist.github.com/arunponnusamy/7013c8617f97937250cb2c2de57c9b11">here</a>.</p>
+<p class="col-sm-offset-3 col-sm-6 col-sm-offset-3">The full code is available <a href="https://gist.github.com/arunponnusamy/7013c8617f97937250cb2c2de57c9b11">here</a>.</p>
 
-<h2 class="col-sm-offset-2 col-sm-8 col-sm-offset-2">Execution time</h2>
+<h2 class="col-sm-offset-3 col-sm-6 col-sm-offset-3">Execution time</h2>
 
-<p class="col-sm-offset-2 col-sm-8 col-sm-offset-2">To give you an idea of the execution time, for a 620x420 image , <b>HOG</b> takes around <b>0.2 seconds</b> whereas <b>CNN</b> takes around <b>3.3 seconds</b> on CPU <i>(Intel i5 Dual core 1.8GHz).</i></p>
+<p class="col-sm-offset-3 col-sm-6 col-sm-offset-3">To give you an idea of the execution time, for a 620x420 image , <b>HOG</b> takes around <b>0.2 seconds</b> whereas <b>CNN</b> takes around <b>3.3 seconds</b> on CPU <i>(Intel i5 Dual core 1.8GHz).</i></p>
 
-<img class="col-sm-offset-3 col-sm-6 col-sm-offset-3" src="https://cdn-images-1.medium.com/max/800/1*9ZOYDpQvmCI_UOd8wlopkQ.png"/>
+<img class="col-sm-offset-4 col-sm-4 col-sm-offset-4" src="https://cdn-images-1.medium.com/max/800/1*9ZOYDpQvmCI_UOd8wlopkQ.png"/>
         <p id="source" class="col-sm-offset-3 col-sm-6 col-sm-offset-3">Execution time on CPU (in seconds)</p>
 
-<p class="col-sm-offset-2 col-sm-8 col-sm-offset-2">The exact number might vary depending on your hardware setup and the size of the image. The bottom line is HOG takes less than a second whereas CNN takes few seconds on CPU.</p>
+<p class="col-sm-offset-3 col-sm-6 col-sm-offset-3">The exact number might vary depending on your hardware setup and the size of the image. The bottom line is HOG takes less than a second whereas CNN takes few seconds on CPU.</p>
 
-<h2 class="col-sm-offset-2 col-sm-8 col-sm-offset-2">Detecting faces at odd angles</h2>
+<h2 class="col-sm-offset-3 col-sm-6 col-sm-offset-3">Detecting faces at odd angles</h2>
 
-<p class="col-sm-offset-2 col-sm-8 col-sm-offset-2">Here comes the important part.</p>
+<p class="col-sm-offset-3 col-sm-6 col-sm-offset-3">Here comes the important part.</p>
 
-<p class="col-sm-offset-2 col-sm-8 col-sm-offset-2"><b>Can the CNN based detector detect faces at odd angles (read non-frontal) which the HOG based detector might fail to detect?</b></p>
+<p class="col-sm-offset-3 col-sm-6 col-sm-offset-3"><b>Can the CNN based detector detect faces at odd angles (read non-frontal) which the HOG based detector might fail to detect?</b></p>
 
-<p class="col-sm-offset-2 col-sm-8 col-sm-offset-2">Well, the answer is <b>“almost”.</b> ( I have not tested it rigorously to give a confident <i>“yes”</i>. But as far as I have tested, it is working really well for non-frontal images).</p>
+<p class="col-sm-offset-3 col-sm-6 col-sm-offset-3">Well, the answer is <b>“almost”.</b> ( I have not tested it rigorously to give a confident <i>“yes”</i>. But as far as I have tested, it is working really well for non-frontal images).</p>
 
-<p class="col-sm-offset-2 col-sm-8 col-sm-offset-2">Let’s look at some of the examples where HOG based detector fails but CNN is able to detect.</p>
+<p class="col-sm-offset-3 col-sm-6 col-sm-offset-3">Let’s look at some of the examples where HOG based detector fails but CNN is able to detect.</p>
 
-<img class="col-sm-offset-3 col-sm-6 col-sm-offset-3" src="https://cdn-images-1.medium.com/max/800/1*i8cz2BUBYOKOjzpCJThG0A.png"/>
+<img class="col-sm-offset-4 col-sm-4 col-sm-offset-4" src="https://cdn-images-1.medium.com/max/800/1*i8cz2BUBYOKOjzpCJThG0A.png"/>
 
-<img class="col-sm-offset-3 col-sm-6 col-sm-offset-3" src="https://cdn-images-1.medium.com/max/800/1*kuzHyLXDR22TWwtdmKz-lA.png"/>
+<img class="col-sm-offset-4 col-sm-4 col-sm-offset-4" src="https://cdn-images-1.medium.com/max/800/1*kuzHyLXDR22TWwtdmKz-lA.png"/>
 
-<img class="col-sm-offset-3 col-sm-6 col-sm-offset-3" src="https://cdn-images-1.medium.com/max/800/1*sOC0csm6m1LaeFqB2Om19Q.png"/>
+<img class="col-sm-offset-4 col-sm-4 col-sm-offset-4" src="https://cdn-images-1.medium.com/max/800/1*sOC0csm6m1LaeFqB2Om19Q.png"/>
 
-<img class="col-sm-offset-3 col-sm-6 col-sm-offset-3" src="https://cdn-images-1.medium.com/max/800/1*yIQeaw1O1dAVJKJPB8Nzbw.png"/>
+<img class="col-sm-offset-4 col-sm-4 col-sm-offset-4" src="https://cdn-images-1.medium.com/max/800/1*yIQeaw1O1dAVJKJPB8Nzbw.png"/>
 
-<p class="col-sm-offset-2 col-sm-8 col-sm-offset-2">and the list goes on.</p>
+<p class="col-sm-offset-3 col-sm-6 col-sm-offset-3">and the list goes on.</p>
 
-<p class="col-sm-offset-2 col-sm-8 col-sm-offset-2">This is not to say that HOG based detector doesn’t work at all for non-frontal images. In fact it does detect some of the non-frontal images such as below.</p>
+<p class="col-sm-offset-3 col-sm-6 col-sm-offset-3">This is not to say that HOG based detector doesn’t work at all for non-frontal images. In fact it does detect some of the non-frontal images such as below.</p>
 
-<img class="col-sm-offset-3 col-sm-6 col-sm-offset-3" src="https://cdn-images-1.medium.com/max/800/1*IVYtc7PEBwJaImmqxfYhgQ.png"/>
+<img class="col-sm-offset-4 col-sm-4 col-sm-offset-4" src="https://cdn-images-1.medium.com/max/800/1*IVYtc7PEBwJaImmqxfYhgQ.png"/>
 
-<img class="col-sm-offset-3 col-sm-6 col-sm-offset-3" src="https://cdn-images-1.medium.com/max/800/1*5r8MQeUSaTaRIW6w9g94Fw.png"/>
+<img class="col-sm-offset-5 col-sm-2 col-sm-offset-5" src="https://cdn-images-1.medium.com/max/800/1*5r8MQeUSaTaRIW6w9g94Fw.png"/>
 
-<img class="col-sm-offset-3 col-sm-6 col-sm-offset-3" src="https://cdn-images-1.medium.com/max/800/1*BbUvAUbgQwqw9DxyIcmdlg.png"/>
+<img class="col-sm-offset-4 col-sm-4 col-sm-offset-4" src="https://cdn-images-1.medium.com/max/800/1*BbUvAUbgQwqw9DxyIcmdlg.png"/>
 
         <p id="source" class="col-sm-offset-3 col-sm-6 col-sm-offset-3">All the images above are taken from Google Images. I do not own the copyright.</p>
 
-<h2 class="col-sm-offset-2 col-sm-8 col-sm-offset-2">Summary</h2>
+<h2 class="col-sm-offset-3 col-sm-6 col-sm-offset-3">Summary</h2>
 
-<p class="col-sm-offset-2 col-sm-8 col-sm-offset-2">In this post we looked at the lesser known CNN based face detector from dlib and compared the output with the widely used HOG+SVM based face detector.</p>
+<p class="col-sm-offset-3 col-sm-6 col-sm-offset-3">In this post we looked at the lesser known CNN based face detector from dlib and compared the output with the widely used HOG+SVM based face detector.</p>
 
-<p class="col-sm-offset-2 col-sm-8 col-sm-offset-2">We observed that the CNN based detector works really well for non-frontal faces at odd angles where HOG based detector struggles.</p>
+<p class="col-sm-offset-3 col-sm-6 col-sm-offset-3">We observed that the CNN based detector works really well for non-frontal faces at odd angles where HOG based detector struggles.</p>
 
-<p class="col-sm-offset-2 col-sm-8 col-sm-offset-2">Unfortunately, CNN based detector is computationally heavy and is not suitable for real-time video at the moment. If you have noticed the detector function call ( <code>dlib.cnn_face_detection_model_v1()</code> ) it says v1 which is version 1. Which means there is a high chance that the author might come up with the next version which is light weight and can be used for real-time applications.</p>
+<p class="col-sm-offset-3 col-sm-6 col-sm-offset-3">Unfortunately, CNN based detector is computationally heavy and is not suitable for real-time video at the moment. If you have noticed the detector function call ( <code>dlib.cnn_face_detection_model_v1()</code> ) it says v1 which is version 1. Which means there is a high chance that the author might come up with the next version which is light weight and can be used for real-time applications.</p>
 
-<p class="col-sm-offset-2 col-sm-8 col-sm-offset-2">Let’s hope for a light weight version in the next release of dlib.</p>
+<p class="col-sm-offset-3 col-sm-6 col-sm-offset-3">Let’s hope for a light weight version in the next release of dlib.</p>
 
-<p class="col-sm-offset-2 col-sm-8 col-sm-offset-2">Well, that’s all for now. Feel free to share your thoughts in the comments below or you can reach out to me on twitter at <a href="https://twitter.com/ponnusamy_arun">@ponnusamy_arun</a> .</p>
+<p class="col-sm-offset-3 col-sm-6 col-sm-offset-3">Well, that’s all for now. Feel free to share your thoughts in the comments below or you can reach out to me on twitter at <a href="https://twitter.com/ponnusamy_arun">@ponnusamy_arun</a> .</p>
 
-<p class="col-sm-offset-2 col-sm-8 col-sm-offset-2">Peace.</p>
+<p class="col-sm-offset-3 col-sm-6 col-sm-offset-3">Peace.</p>
 
-<h3 class="col-sm-offset-2 col-sm-8 col-sm-offset-2"><b>Subscribe to newsletter</b></h3>
-<p class="col-sm-offset-2 col-sm-8 col-sm-offset-2">If you are finding this blog interesting, consider subscribing to the newsletter to get notified when new posts go live. Don't worry, I publish only one or two posts per month.</p>
-<p class="col-sm-offset-2 col-sm-8 col-sm-offset-2"><a href="http://eepurl.com/dtoOc9"> Subscribe</a></p>
+<h3 class="col-sm-offset-3 col-sm-6 col-sm-offset-3">Update :</h3>
+<p class="col-sm-offset-3 col-sm-6 col-sm-offset-3">If you are concerned about real time performance, checkout the face detector available in <a href="cvlib.net">cvlib</a>. It detects faces in (almost) all angles and is capable of processing real time input.</p>
+
+
+<h3 class="col-sm-offset-3 col-sm-6 col-sm-offset-3"><b>Subscribe to newsletter</b></h3>
+<p class="col-sm-offset-3 col-sm-6 col-sm-offset-3">If you are finding this blog interesting, consider subscribing to the newsletter to get notified when new posts go live. (Don't worry, I publish only one or two posts per month)</p>
+<p class="col-sm-offset-3 col-sm-6 col-sm-offset-3"><a href="http://eepurl.com/dtoOc9"> Subscribe</a></p>
 
    </div>
 
 </section>
 
-<div id="disqus_thread" class="col-sm-offset-2 col-sm-8 col-sm-offset-2"></div>
-<script class="col-sm-offset-2 col-sm-8 col-sm-offset-2">
+<div id="disqus_thread" class="col-sm-offset-3 col-sm-6 col-sm-offset-3"></div>
+<script class="col-sm-offset-3 col-sm-6 col-sm-offset-3">
 
 /**
 *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
@@ -269,7 +273,7 @@ s.setAttribute('data-timestamp', +new Date());
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
                             
 
-<footer class="col-sm-offset-2 col-sm-8 col-sm-offset-2">
+<footer class="col-sm-offset-3 col-sm-6 col-sm-offset-3">
     <div class="row">
         <p class="col-sm-4">&copy; 2018 Arun Ponnusamy</p>
         <ul class="col-sm-8">
