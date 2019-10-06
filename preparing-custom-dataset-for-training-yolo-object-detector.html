@@ -200,9 +200,16 @@
 
 <p class="col-sm-offset-3 col-sm-6 col-sm-offset-3"><code>ls "$PWD/"*.jpg | head -100 > helmets_train.txt</code></p>
 
+<p class="col-sm-offset-3 col-sm-6 col-sm-offset-3">I have a total of 120 images labeled (which is very less actually). So I am using 100 images for training and 20 images for validation. Go to the directory where you have the helmet images and run the above command. It should create a text file listing the paths of the first 100 images in the directory. (Feel free to change the number as you see fit)</p>
+
 <p class="col-sm-offset-3 col-sm-6 col-sm-offset-3"><code> helmets_test.txt</code> - this file will have the list of the images that will be used for validation.</p>
 
-<p class="col-sm-offset-3 col-sm-6 col-sm-offset-3"><code>ls "$PWD/"*.jpg | tail -20 > helmets_train.txt</code></p>
+<p class="col-sm-offset-3 col-sm-6 col-sm-offset-3"><code>ls "$PWD/"*.jpg | tail -20 > helmets_test.txt</code></p>
+
+<p class="col-sm-offset-3 col-sm-6 col-sm-offset-3">Go to the directory where you have the helmet images and run the above command. It should create a text file listing the paths of the last 20 images in the directory. (Again, feel free to change the number as you see fit)</p>
+
+<p class="col-sm-offset-3 col-sm-6 col-sm-offset-3">Once these text files are created you can move them from the images directory to appropriate place in the project directory you are working on or you can just leave it there.</p>
+
 
 <p class="col-sm-offset-3 col-sm-6 col-sm-offset-3"><code>helmets.data</code> - this file will contain the following lines.</p>
 
@@ -211,6 +218,8 @@
 <p class="col-sm-offset-3 col-sm-6 col-sm-offset-3">valid  = /path/to/helmets_test.txt</p>
 <p class="col-sm-offset-3 col-sm-6 col-sm-offset-3">names = /path/to/classes.names</p>
 <p class="col-sm-offset-3 col-sm-6 col-sm-offset-3">backup = backup/ </p>
+
+<p class="col-sm-offset-3 col-sm-6 col-sm-offset-3">First line is the number of object classes that we are training the network to detect. 'backup' is the place where DarkNet will save the trained weights for us.
 
 <h2 class="col-sm-offset-3 col-sm-6 col-sm-offset-3">Summary</h2>
 
