@@ -75,7 +75,7 @@ section
 p
 {
     font-family: "PT Sans", Helvetica, Arial, sans-serif;
-    font-size: 20px;
+    font-size: 19px;
     padding: 10px 0 10px 0; 
 }
 li
@@ -127,6 +127,6 @@ footer .col-sm-8 {
     justify-content: flex-end;
 }
 footer {
-    font-size: 12px;
+    font-size: 11px;
     padding: 20px 0;
 }
