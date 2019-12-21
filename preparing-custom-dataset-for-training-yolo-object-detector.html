@@ -199,29 +199,29 @@
 
 <p class="col-sm-offset-3 col-sm-6 col-sm-offset-3"><code>classes.names</code> - this is same as the 'classes.txt' file which we used earlier with LabelImg containing the object categories (in our case just 'helmet') just with '.names' extension. So you can just reuse/rename the file to 'classes.names'.</p>
 
-<p class="col-sm-offset-3 col-sm-6 col-sm-offset-3"><code> helmets_train.txt</code> - DarkNet expects a text file listing all the images that are going to be used for training. Generally people use 60-90% of the total dataset for training and keep the remaining for testing/validation. There is no real consensus here on the numbers. It varies depending on the situation.</p>
+<p class="col-sm-offset-3 col-sm-6 col-sm-offset-3"><code> train.txt</code> - DarkNet expects a text file listing all the images that are going to be used for training. Generally people use 60-90% of the total dataset for training and keep the remaining for testing/validation. There is no real consensus here on the numbers. It varies depending on the situation.</p>
 
 <p class="col-sm-offset-3 col-sm-6 col-sm-offset-3">In this series of posts, I will be using a small amount of data since I couldn't label so much. Feel free to change the split  depending upon how much labeled data you have.</p>
 
-<p class="col-sm-offset-3 col-sm-6 col-sm-offset-3"><code>ls "$PWD/"*.jpg | head -100 > helmets_train.txt</code></p>
+<p class="col-sm-offset-3 col-sm-6 col-sm-offset-3"><code>ls "$PWD/"*.jpg | head -100 > train.txt</code></p>
 
 <p class="col-sm-offset-3 col-sm-6 col-sm-offset-3">I have a total of 120 images labeled (which is very less actually). So I am using 100 images for training and 20 images for validation. Go to the directory where you have the helmet images and run the above command. It should create a text file listing the paths of the first 100 images in the directory. (Feel free to change the number as you see fit)</p>
 
-<p class="col-sm-offset-3 col-sm-6 col-sm-offset-3"><code> helmets_test.txt</code> - this file will have the list of the images that will be used for validation.</p>
+<p class="col-sm-offset-3 col-sm-6 col-sm-offset-3"><code> test.txt</code> - this file will have the list of the images that will be used for validation.</p>
 
-<p class="col-sm-offset-3 col-sm-6 col-sm-offset-3"><code>ls "$PWD/"*.jpg | tail -20 > helmets_test.txt</code></p>
+<p class="col-sm-offset-3 col-sm-6 col-sm-offset-3"><code>ls "$PWD/"*.jpg | tail -20 > test.txt</code></p>
 
 <p class="col-sm-offset-3 col-sm-6 col-sm-offset-3">Go to the directory where you have the helmet images and run the above command. It should create a text file listing the paths of the last 20 images in the directory. (Again, feel free to change the number as you see fit)</p>
 
 <p class="col-sm-offset-3 col-sm-6 col-sm-offset-3">Once these text files are created you can move them from the images directory to appropriate place in the project directory you are working on or you can just leave it there.</p>
 
 
-<p class="col-sm-offset-3 col-sm-6 col-sm-offset-3"><code>helmets.data</code> - this file will contain the following lines.</p>
+<p class="col-sm-offset-3 col-sm-6 col-sm-offset-3"><code>obj.data</code> - this file will contain the following lines.</p>
 
 <code class="col-sm-offset-3 col-sm-6 col-sm-offset-3">
 	<p>classes= 1</p>
-	<p>train  = /path/to/helmets_train.txt</p>
-	<p>valid  = /path/to/helmets_test.txt</p>
+	<p>train  = /path/to/train.txt</p>
+	<p>valid  = /path/to/test.txt</p>
 	<p>names = /path/to/classes.names</p>
 	<p>backup = backup/ </p>
 </code>
