@@ -11,6 +11,26 @@
 
   gtag('config', 'UA-115491079-1');
 </script>
+	
+	<script>
+    (function (w,d,s,o,f,js,fjs) {
+        w['circleWidget']=o;w[o] = w[o] || function () { (w[o].q = w[o].q || []).push(arguments) };
+        js = d.createElement(s), fjs = d.getElementsByTagName(s)[0];
+        js.id = o; js.src = f; js.async = 1; fjs.parentNode.insertBefore(js, fjs);
+    }(window, document, 'script', 'mw', 'https://community.visiongeek.io/external/widget.js'));
+
+    mw('init', {
+      community_public_uid: 'cf8e30b0',
+      brand_color: '#506CF0'
+    });
+
+    // Optional: pass in a default space slug and/or topic slug
+    mw('setDefaults', {
+       space_slug: 'blog',
+       topic_slug: 'yolo-object-detection-with-opencv-and-python'
+     });
+    </script>
+
 
     <title>YOLO Object Detection with OpenCV and Python</title>
     <meta name="description" content="Object detection using OpenCV dnn module with a pre-trained YOLO v3 model with Python. Detect 80 common objects in context including car, bike, dog, cat etc."/>
@@ -238,7 +258,8 @@
 
 <p class="col-sm-offset-3 col-sm-6 col-sm-offset-3">We have only scratched the surface. There is a lot more to object detection. I will be covering more on object detection in the future including other frameworks like Faster R-CNN and SSD. Be sure to subscribe to get notified when new posts are published.</p>
 
-<p class="col-sm-offset-3 col-sm-6 col-sm-offset-3">That’s all for now. Thanks for reading. I hope this post was useful to get started with object detection. Feel free to share your thoughts in the comments or you can reach out to me on twitter <a href="https://twitter.com/ponnusamy_arun">@ponnusamy_arun</a>.</p>
+<p class="col-sm-offset-3 col-sm-6 col-sm-offset-3">That’s all for now. Thanks for reading. I hope this post was useful to get started with object detection. Feel free to share your comments or queries <a href="https://community.visiongeek.io/c/blog/yolo-object-detection-with-opencv-and-python">here</a> or using 
+	the community widget at the bottom-right corner.</p>
 
 <p class="col-sm-offset-3 col-sm-6 col-sm-offset-3">If you are getting value out of my work, consider supporting me on <a href="https://patreon.com/arunponnusamy">Patreon</a> and unlock exclusive benefits.</p>
 <p class="col-sm-offset-3 col-sm-6 col-sm-offset-3">Cheers.</p>
@@ -254,29 +275,7 @@
 
    </div>
 
-</section>
-
-<div id="disqus_thread" class="col-sm-offset-3 col-sm-6 col-sm-offset-3"></div>
-<script class="col-sm-offset-3 col-sm-6 col-sm-offset-3">
-
-/**
-*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
-/*
-var disqus_config = function () {
-this.page.url = 'http://arunponnusamy.com/yolo-object-detection-opencv-python.html';  // Replace PAGE_URL with your page's canonical URL variable
-this.page.identifier = 'yolo-object-detection-opencv-python'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-};
-*/
-(function() { // DON'T EDIT BELOW THIS LINE
-var d = document, s = d.createElement('script');
-s.src = 'https://arunponnusamy.disqus.com/embed.js';
-s.setAttribute('data-timestamp', +new Date());
-(d.head || d.body).appendChild(s);
-})();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-                            
+</section>                   
 
 <footer class="col-sm-offset-3 col-sm-6 col-sm-offset-3">
     <div class="row">
