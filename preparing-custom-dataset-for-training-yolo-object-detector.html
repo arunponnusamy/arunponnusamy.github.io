@@ -11,6 +11,25 @@
 
   gtag('config', 'UA-115491079-1');
 </script>
+	
+    <script>
+    (function (w,d,s,o,f,js,fjs) {
+        w['circleWidget']=o;w[o] = w[o] || function () { (w[o].q = w[o].q || []).push(arguments) };
+        js = d.createElement(s), fjs = d.getElementsByTagName(s)[0];
+        js.id = o; js.src = f; js.async = 1; fjs.parentNode.insertBefore(js, fjs);
+    }(window, document, 'script', 'mw', 'https://community.visiongeek.io/external/widget.js'));
+
+    mw('init', {
+      community_public_uid: 'cf8e30b0',
+      brand_color: '#506CF0'
+    });
+
+    // Optional: pass in a default space slug and/or topic slug
+    mw('setDefaults', {
+       space_slug: 'blog',
+       topic_slug: 'preparing-custom-dataset-for-training-yolo-object-detector'
+     });
+    </script>
 
     <title>Preparing Custom Dataset for Training YOLO Object Detector</title>
     <meta name="description" content="Preparing Custom Dataset for Training YOLO Object Detector with DarkNet to detect new object categories that are not covered in pre-trained models. "/>
@@ -240,8 +259,8 @@
 <p class="col-sm-offset-3 col-sm-6 col-sm-offset-3">I hope you enjoyed today's post. In the next post, I'll explain how to actually train the object detection model (YOLO) using DarkNet. Be sure to subscribe to get notified when  the next post is published.</p>
 
 
-<p class="col-sm-offset-3 col-sm-6 col-sm-offset-3">Feel free to share your thoughts in the comments or you can reach out on twitter <a href="https://twitter.com/ponnusamy_arun">@ponnusamy_arun</a>.</p>
-
+<p class="col-sm-offset-3 col-sm-6 col-sm-offset-3">Feel free to share your comments or queries <a href="https://community.visiongeek.io/c/blog/preparing-custom-dataset-for-training-yolo-object-detector">here</a> or using 
+	the community widget at the bottom-right corner.</p>
 <p class="col-sm-offset-3 col-sm-6 col-sm-offset-3">If you are getting value out of my work, consider supporting me on <a href="https://patreon.com/arunponnusamy">Patreon</a> and unlock exclusive benefits.</p>
 <p class="col-sm-offset-3 col-sm-6 col-sm-offset-3">Cheers.</p>
 <p class="col-sm-offset-3 col-sm-6 col-sm-offset-3"><script async data-uid="c3fe30048c" src="https://expert-musician-1659.ck.page/c3fe30048c/index.js"></script></p>
@@ -257,27 +276,7 @@
 
 </section>
 
-<div id="disqus_thread" class="col-sm-offset-3 col-sm-6 col-sm-offset-3"></div>
-<script class="col-sm-offset-3 col-sm-6 col-sm-offset-3">
 
-/**
-*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
-/*
-var disqus_config = function () {
-this.page.url = 'http://arunponnusamy.com/preparing-custom-dataset-for-training-yolo-object-detector.html';  // Replace PAGE_URL with your page's canonical URL variable
-this.page.identifier = 'preparing-custom-dataset-for-training-yolo-object-detector'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-};
-*/
-(function() { // DON'T EDIT BELOW THIS LINE
-var d = document, s = d.createElement('script');
-s.src = 'https://arunponnusamy.disqus.com/embed.js';
-s.setAttribute('data-timestamp', +new Date());
-(d.head || d.body).appendChild(s);
-})();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-                            
 
 <footer class="col-sm-offset-3 col-sm-6 col-sm-offset-3">
     <div class="row">
